@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Media Comment Analysis</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #6c5ce7, #1e1e2f);
+        }
+        .wrapper { width: 100%; max-width: 520px; padding: 20px; }
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 30px 28px 26px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.4);
+            backdrop-filter: blur(14px);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .title { text-align:center; font-size:24px; font-weight:600; margin-bottom:6px; }
+        .subtitle { text-align:center; font-size:13px; opacity:0.8; margin-bottom:24px; }
+        label { font-size:13px; font-weight:500; margin-bottom:6px; display:block; }
+        select, input[type="text"], input[type="file"] {
+            width:100%; padding:11px 12px; border-radius:10px; border:none;
+            margin-bottom:18px; font-size:13px; font-family:inherit;
+            background: rgba(255,255,255,0.12); color:#fff; outline:none;
+        }
+        select:focus, input[type="text"]:focus, input[type="file"]:focus { box-shadow: 0 0 0 1px #6c5ce7; }
+        option { color:#000; }
+        .btn { width:100%; padding:12px; border-radius:10px; border:none; margin-top:6px;
+               font-size:15px; font-weight:600; cursor:pointer;
+               background: linear-gradient(135deg,#6c5ce7,#4a90e2); color:#fff;
+               transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease; }
+        .btn:hover { transform: translateY(-1px); box-shadow:0 10px 25px rgba(0,0,0,0.35); opacity:0.95; }
+        #csvUploadBox { display:none; }
+        .footer { margin-top:14px; text-align:center; font-size:11px; color: rgba(255,255,255,0.65); }
+
+        /* Mode selector small styling (keeps design) */
+        .mode-row { display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+        .mode-option {
+            display:inline-flex; align-items:center; gap:8px;
+            background: rgba(255,255,255,0.06); padding:8px 10px; border-radius:10px;
+            cursor:pointer; font-size:13px;
+        }
+        .mode-option input { transform:scale(1.05); }
+        .note { font-size:12px; opacity:0.85; margin-top:-10px; margin-bottom:12px; }
+
+        /* keep small on mobile */
+        @media (max-width:480px) {
+            .mode-row { flex-direction:column; align-items:flex-start; gap:8px; }
+        }
+    </style>
+
+    <script>
+        function onPlatformChange() {
+            const platform = document.getElementById("platform").value.toLowerCase();
+            const csvBox = document.getElementById("csvUploadBox");
+            const csvLabel = document.getElementById("csvLabel");
+            const modeContainer = document.getElementById("modeContainer");
+
+            // YouTube: URL-only -> hide mode and CSV
+            if (platform === "youtube") {
+                modeContainer.style.display = "none";
+                csvBox.style.display = "none";
+            }
+            // Facebook: CSV-only -> hide mode, show CSV
+            else if (platform === "facebook") {
+                modeContainer.style.display = "none";
+                csvBox.style.display = "block";
+                csvLabel.innerText = "Upload Facebook Comments CSV";
+            }
+            // Instagram/Twitter: show mode chooser, default to URL mode
+            else if (platform === "instagram" || platform === "twitter") {
+                modeContainer.style.display = "block";
+                // default select URL mode
+                document.getElementById("mode_url").checked = true;
+                csvBox.style.display = "none";
+                csvLabel.innerText = platform.charAt(0).toUpperCase() + platform.slice(1) + " Comments CSV";
+            } else {
+                // nothing selected
+                modeContainer.style.display = "none";
+                csvBox.style.display = "none";
+            }
+        }
+
+        function onModeChange() {
+            const mode = document.querySelector('input[name="mode"]:checked')?.value;
+            const csvBox = document.getElementById("csvUploadBox");
+            if (mode === "csv") {
+                csvBox.style.display = "block";
+            } else {
+                csvBox.style.display = "none";
+            }
+        }
+
+        function validateForm() {
+            const platform = document.getElementById("platform").value.toLowerCase();
+            const urlInput = document.getElementById("video_url");
+            const mode = document.querySelector('input[name="mode"]:checked')?.value;
+
+            // YouTube requires URL
+            if (platform === "youtube") {
+                if (!urlInput.value.trim()) {
+                    alert("Please paste YouTube URL for analysis.");
+                    return false;
+                }
+                return true;
+            }
+
+            // Facebook requires CSV upload
+            if (platform === "facebook") {
+                const file = document.querySelector('input[name="comments_file"]')?.files[0];
+                if (!file) {
+                    alert("Please upload Facebook comments CSV file.");
+                    return false;
+                }
+                return true;
+            }
+
+            // Instagram & Twitter: check mode
+            if (platform === "instagram" || platform === "twitter") {
+                if (mode === "url") {
+                    if (!urlInput.value.trim()) {
+                        alert("Please paste the post/tweet URL to use the scraper, or switch to 'Upload CSV' mode.");
+                        return false;
+                    }
+                    return true;
+                } else if (mode === "csv") {
+                    const file = document.querySelector('input[name="comments_file"]')?.files[0];
+                    if (!file) {
+                        alert("Please upload comments CSV file in CSV mode.");
+                        return false;
+                    }
+                    return true;
+                } else {
+                    alert("Please select a mode: Use URL (scraper) or Upload CSV.");
+                    return false;
+                }
+            }
+
+            // If no platform selected
+            alert("Please select a platform.");
+            return false;
+        }
+
+        // keep UI consistent on load
+        window.addEventListener('DOMContentLoaded', (event) => {
+            onPlatformChange();
+        });
+    </script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="card">
+            <div class="title">Social Media Comment Analysis</div>
+            <div class="subtitle">Multi-platform sentiment dashboard for YouTube, Facebook, Instagram & Twitter</div>
+
+            <form action="/dashboard" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
+                <label>Select Platform</label>
+                <select name="platform" id="platform" onchange="onPlatformChange()" required>
+                    <option value="">-- Select Platform --</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="twitter">Twitter</option>
+                </select>
+
+                <label>Paste Video / Post URL (required for YouTube; optional for CSV-based platforms)</label>
+                <input
+                    type="text"
+                    id="video_url"
+                    name="video_url"
+                    placeholder="Paste YouTube / Facebook / Instagram / Twitter link here"
+                >
+
+                <!-- MODE SELECTOR for Instagram/Twitter (URL scraper OR CSV upload) -->
+                <div id="modeContainer" style="display:none; margin-bottom:6px;">
+                    <label style="margin-bottom:8px;">Select Mode</label>
+                    <div class="mode-row">
+                        <label class="mode-option">
+                            <input type="radio" name="mode" id="mode_url" value="url" onclick="onModeChange()" />
+                            Use URL (Scraper)
+                        </label>
+
+                        <label class="mode-option">
+                            <input type="radio" name="mode" id="mode_csv" value="csv" onclick="onModeChange()" />
+                            Upload CSV (Fallback)
+                        </label>
+                    </div>
+                    <div class="note">Tip: Use URL mode for automatic extraction. Use CSV if scraping fails or you already have data.</div>
+                </div>
+
+                <!-- Non-YouTube platforms CSV upload -->
+                <div id="csvUploadBox">
+                    <label id="csvLabel">Upload Comments CSV</label>
+                    <input type="file" name="comments_file" accept=".csv">
+                </div>
+
+                <button type="submit" class="btn">Analyze Comments</button>
+
+            </form>
+        </div>
+
+        <div class="footer">
+            © 2025 · Social Media Comment Analysis ·
+        </div>
+    </div>
+
+</body>
+</html>
