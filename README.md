@@ -1,68 +1,82 @@
-# 📊 Social Media Comment Analysis
+# 📊 **Social Media Comment Analysis**
 
-A multi-platform Social Media Comment Analysis Dashboard that analyzes comments from YouTube, Facebook, Instagram, and Twitter/X using Sentiment Analysis and NLP techniques.
+A multi-platform **Social Media Comment Analysis Dashboard** that analyzes comments from **YouTube, Facebook, Instagram, and Twitter/X** using **Sentiment Analysis** and **NLP techniques**.
 
 The system classifies comments into:
 
-- ✅ Positive
-- ❌ Negative
-- ⚪ Neutral
+- ✅ **Positive**
+- ❌ **Negative**
+- ⚪ **Neutral**
 
-It also provides graphical visualization using Pie Charts and Bar Charts.
+It also provides graphical visualization using **Pie Charts** and **Bar Charts**.
 
+---
 
-# 🚀 Features
+# 🚀 **Features**
 
-## 🔹 Multi-Platform Support
+## 🔹 **Multi-Platform Support**
 
 - YouTube Comment Analysis
 - Facebook Comment Analysis
 - Instagram Comment Analysis
 - Twitter/X Comment Analysis
 
-## 🔹 Sentiment Analysis
+---
+
+## 🔹 **Sentiment Analysis**
 
 - Detects Positive, Negative, and Neutral comments
 - NLP-based text processing
 - Real-time sentiment calculation
 
-## 🔹 Interactive Dashboard
+---
+
+## 🔹 **Interactive Dashboard**
 
 - Pie Chart Visualization
 - Bar Chart Visualization
 - Comment Summary Cards
 - Responsive UI Design
 
-## 🔹 Comment Insights
+---
+
+## 🔹 **Comment Insights**
 
 - Total comments count
 - Positive comments section
 - Negative comments section
 - Neutral comments section
 
-## 🔹 Modern UI
+---
+
+## 🔹 **Modern UI**
 
 - Dark theme dashboard
 - Glassmorphism cards
 - Responsive layout
 - Attractive charts and statistics
 
+---
 
-# 🛠️ Tech Stack
+# 🛠️ **Tech Stack**
 
-## Frontend
+## 🔹 **Frontend**
 
 - HTML5
 - CSS3
 - JavaScript
 - Bootstrap
 
-## Backend
+---
+
+## 🔹 **Backend**
 
 - Python
 - Flask
 
-## Libraries Used
+---
+
+## 🔹 **Libraries Used**
 
 - Pandas
 - Matplotlib
@@ -70,8 +84,9 @@ It also provides graphical visualization using Pie Charts and Bar Charts.
 - VaderSentiment
 - NumPy
 
+---
 
-# 📂 Project Structure
+# 📂 **Project Structure**
 
 ```bash
 social-media-comment-analysis/
@@ -88,50 +103,70 @@ social-media-comment-analysis/
 ├── app.py
 ├── requirements.txt
 ├── README.md
-└── dataset
+└── dataset/
+```
 
-##⚙️ Installation
+---
 
-## 1️⃣ Clone Repository
+# ⚙️ **Installation**
+
+## 1️⃣ **Clone Repository**
 
 ```bash
 git clone https://github.com/sarthaknavale01/social-media-comment-analysis.git
+```
 
-## 2️⃣ Navigate to Project Folder
+---
+
+## 2️⃣ **Navigate to Project Folder**
 
 ```bash
 cd social-media-comment-analysis
+```
 
-## 3️⃣ Create Virtual Environment (Optional)
+---
+
+## 3️⃣ **Create Virtual Environment (Optional)**
 
 ```bash
 python -m venv venv
+```
 
-## 4️⃣ Activate Environment
+---
 
-### Windows
+## 4️⃣ **Activate Environment**
+
+### 🔹 Windows
 
 ```bash
 venv\Scripts\activate
+```
 
-### Linux/Mac
+### 🔹 Linux/Mac
 
 ```bash
 source venv/bin/activate
+```
 
-## 5️⃣ Install Dependencies
+---
+
+## 5️⃣ **Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
+```
 
+---
 
-## 6️⃣ Run Application
+## 6️⃣ **Run Application**
 
 ```bash
 python app.py
+```
 
+---
 
-# 📊 Dashboard Features
+# 📊 **Dashboard Features**
 
 | Feature | Description |
 |----------|-------------|
@@ -144,8 +179,9 @@ python app.py
 
 ---
 
-# 🧠 System Architecture
+# 🧠 **System Architecture**
 
+```text
 User Input URL
        ↓
 Fetch Comments
@@ -158,8 +194,37 @@ Classification
 (Positive / Negative / Neutral)
        ↓
 Data Visualization Dashboard
+```
 
-# 🔮 Future Enhancements
+---
+
+# 📸 **Project Screenshots**
+
+## 🔹 **Home Page**
+
+```md
+![Home Page](images/home.png)
+```
+
+---
+
+## 🔹 **Dashboard Analytics**
+
+```md
+![Dashboard](images/dashboard.png)
+```
+
+---
+
+## 🔹 **Comments Analysis Section**
+
+```md
+![Comments Section](images/comments.png)
+```
+
+---
+
+# 🔮 **Future Enhancements**
 
 - AI-based advanced NLP models
 - Real-time live comment analysis
@@ -168,13 +233,15 @@ Data Visualization Dashboard
 - User Authentication
 - Database Integration
 
+# 👨‍💻 **Author**
 
-# 👨‍💻 Author
+## **Sarthak Navale**
 
-## Sarthak Navale
-Social Media Comment Analysis
+**Social Media Comment Analysis**
+
 GitHub: https://github.com/sarthaknavale01
 
 
-# ⭐ Support
+# ⭐ **Support**
+
 If you like this project, give it a ⭐ on GitHub.
