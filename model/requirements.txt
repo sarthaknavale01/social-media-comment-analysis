@@ -1,0 +1,12 @@
+
+flask
+pandas
+numpy
+matplotlib
+textblob
+vaderSentiment
+youtube-comment-downloader
+google-api-python-client
+wordcloud
+seaborn
+scikit-learn
