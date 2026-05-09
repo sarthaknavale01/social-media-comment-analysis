@@ -82,3 +82,68 @@ social-media-comment-analysis/
 ├── requirements.txt
 ├── README.md
 └── dataset/
+
+
+⚙️ Installation
+1️⃣ Clone Repository
+git clone https://github.com/sarthaknavale01/social-media-comment-analysis.git
+2️⃣ Navigate to Project Folder
+cd social-media-comment-analysis
+3️⃣ Create Virtual Environment (Optional)
+python -m venv venv
+4️⃣ Activate Environment
+Windows
+venv\Scripts\activate
+Linux/Mac
+source venv/bin/activate
+5️⃣ Install Dependencies
+pip install -r requirements.txt
+6️⃣ Run Application
+python app.py
+
+📊 Dashboard Features
+Feature	Description
+Sentiment Detection	Classifies comments into Positive, Negative, Neutral
+Pie Chart	Shows sentiment distribution
+Bar Chart	Displays sentiment count
+Comment Cards	Shows categorized comments
+Total Comment Counter	Displays analyzed comments
+Platform Detection	Detects selected social platform
+
+🧠 System Architecture
+User Input URL
+       ↓
+Fetch Comments
+       ↓
+Preprocessing & Cleaning
+       ↓
+Sentiment Analysis (NLP)
+       ↓
+Classification
+(Positive / Negative / Neutral)
+       ↓
+Data Visualization Dashboard
+
+📸 Project Screenshots
+🔹 Home Page
+
+🔹 Dashboard Analytics
+
+🔹 Comments Analysis Section
+
+🔮 Future Enhancements
+AI-based advanced NLP models
+Real-time live comment analysis
+Emotion Detection
+Export Reports in PDF/Excel
+User Authentication
+Database Integration
+
+👨‍💻 Author
+Sarthak Navale
+– Social Media Comment Analysis
+
+GitHub: https://github.com/sarthaknavale01
+
+⭐ Support
+If you like this project, give it a ⭐ on GitHub.
