@@ -3,66 +3,73 @@
 A multi-platform Social Media Comment Analysis Dashboard that analyzes comments from YouTube, Facebook, Instagram, and Twitter/X using Sentiment Analysis and NLP techniques.
 
 The system classifies comments into:
+
 - ✅ Positive
 - ❌ Negative
 - ⚪ Neutral
 
 It also provides graphical visualization using Pie Charts and Bar Charts.
 
----
 
-## 🚀 Features
+# 🚀 Features
 
-### 🔹 Multi-Platform Support
+## 🔹 Multi-Platform Support
+
 - YouTube Comment Analysis
 - Facebook Comment Analysis
 - Instagram Comment Analysis
 - Twitter/X Comment Analysis
 
-### 🔹 Sentiment Analysis
+## 🔹 Sentiment Analysis
+
 - Detects Positive, Negative, and Neutral comments
 - NLP-based text processing
 - Real-time sentiment calculation
 
-### 🔹 Interactive Dashboard
+## 🔹 Interactive Dashboard
+
 - Pie Chart Visualization
 - Bar Chart Visualization
 - Comment Summary Cards
 - Responsive UI Design
 
-### 🔹 Comment Insights
+## 🔹 Comment Insights
+
 - Total comments count
 - Positive comments section
 - Negative comments section
 - Neutral comments section
 
-### 🔹 Modern UI
+## 🔹 Modern UI
+
 - Dark theme dashboard
 - Glassmorphism cards
 - Responsive layout
 - Attractive charts and statistics
 
----
 
 # 🛠️ Tech Stack
 
 ## Frontend
+
 - HTML5
 - CSS3
 - JavaScript
 - Bootstrap
 
 ## Backend
+
 - Python
 - Flask
 
 ## Libraries Used
+
 - Pandas
 - Matplotlib
-- TextBlob / VaderSentiment
+- TextBlob
+- VaderSentiment
 - NumPy
 
----
 
 # 📂 Project Structure
 
@@ -83,34 +90,62 @@ social-media-comment-analysis/
 ├── README.md
 └── dataset/
 
+# ⚙️ Installation
 
-⚙️ Installation
-1️⃣ Clone Repository
+## 1️⃣ Clone Repository
+
+```bash
 git clone https://github.com/sarthaknavale01/social-media-comment-analysis.git
-2️⃣ Navigate to Project Folder
+
+## 2️⃣ Navigate to Project Folder
+
+```bash
 cd social-media-comment-analysis
-3️⃣ Create Virtual Environment (Optional)
+
+## 3️⃣ Create Virtual Environment (Optional)
+
+```bash
 python -m venv venv
-4️⃣ Activate Environment
-Windows
+
+## 4️⃣ Activate Environment
+
+### Windows
+
+```bash
 venv\Scripts\activate
-Linux/Mac
+
+### Linux/Mac
+
+```bash
 source venv/bin/activate
-5️⃣ Install Dependencies
+
+## 5️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
-6️⃣ Run Application
+
+
+## 6️⃣ Run Application
+
+```bash
 python app.py
 
-📊 Dashboard Features
-Feature	Description
-Sentiment Detection	Classifies comments into Positive, Negative, Neutral
-Pie Chart	Shows sentiment distribution
-Bar Chart	Displays sentiment count
-Comment Cards	Shows categorized comments
-Total Comment Counter	Displays analyzed comments
-Platform Detection	Detects selected social platform
 
-🧠 System Architecture
+# 📊 Dashboard Features
+
+| Feature | Description |
+|----------|-------------|
+| Sentiment Detection | Classifies comments into Positive, Negative, Neutral |
+| Pie Chart | Shows sentiment distribution |
+| Bar Chart | Displays sentiment count |
+| Comment Cards | Shows categorized comments |
+| Total Comment Counter | Displays analyzed comments |
+| Platform Detection | Detects selected social platform |
+
+---
+
+# 🧠 System Architecture
+
 User Input URL
        ↓
 Fetch Comments
@@ -124,26 +159,22 @@ Classification
        ↓
 Data Visualization Dashboard
 
-📸 Project Screenshots
-🔹 Home Page
+# 🔮 Future Enhancements
 
-🔹 Dashboard Analytics
+- AI-based advanced NLP models
+- Real-time live comment analysis
+- Emotion Detection
+- Export Reports in PDF/Excel
+- User Authentication
+- Database Integration
 
-🔹 Comments Analysis Section
 
-🔮 Future Enhancements
-AI-based advanced NLP models
-Real-time live comment analysis
-Emotion Detection
-Export Reports in PDF/Excel
-User Authentication
-Database Integration
+# 👨‍💻 Author
 
-👨‍💻 Author
-Sarthak Navale
-– Social Media Comment Analysis
-
+## Sarthak Navale
+Social Media Comment Analysis
 GitHub: https://github.com/sarthaknavale01
 
-⭐ Support
+
+# ⭐ Support
 If you like this project, give it a ⭐ on GitHub.
